@@ -33,4 +33,21 @@
      count: 7
  */
 
-// Write your JavaScript here
+function changeElementText(element, answer) {
+    $(element).append(answer);
+}
+
+function addTextLine (element, text){
+    $(element).append("<div>"+text+"</div>");
+}
+
+function formatAd(originalAd){
+    for (var i = 0; i < originalAd.length; i++){
+        addTextLine("#originalAd", originalAd[i].join(" "));
+    }
+
+    var correctedAd = originalAd[0].join(" ") + " " + originalAd[1].reverse().join(" ") + " " + originalAd[2].join(" ");
+
+    changeElementText("#correctedText", correctedAd);
+    changeElementText("#wordCount", correctedAd.split(" ").length);
+}
