@@ -26,4 +26,30 @@
 
 */
 
-// Write your JavaScript here
+function changeElementText(element, answer) {
+    $(element).text(answer);
+}
+
+function countRsNotes() {
+    var args = Array.prototype.slice.call(arguments);
+    changeElementText("#givenNotes", args.join(", "));
+
+    var totalSum = 0;
+    var validDenominations = [5, 10, 20, 50, 100, 500, 1000];
+
+    for (var i = 0; i < args.length; i++){
+        var currentNote = args[i];
+        if (isInArray(currentNote, validDenominations) === true) {
+            totalSum += currentNote;
+        }
+        else {
+            changeElementText("#totalAmount", totalSum.toString());
+            return;
+        }
+    }
+    changeElementText("#totalAmount", totalSum.toString());
+}
+
+function isInArray(value, array) {
+  return array.indexOf(value) > -1;
+}
